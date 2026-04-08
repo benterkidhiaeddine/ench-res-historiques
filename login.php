@@ -11,7 +11,7 @@
         if ($user && password_verify($password, $user['password'])) {
             session_start();
             $_SESSION['user_id'] = $user['id'];
-            header("Location: dashboard.php"); // Redirige vers les enchères
+            header("Location: user.php"); // Redirige vers les enchères
             exit();
         } else {
             echo "Nom d'utilisateur ou mot de passe incorrect.";
