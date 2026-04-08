@@ -3,10 +3,25 @@ body{
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    background-image: url('bg.png');
+    background-size: cover; /* Pour que l'image couvre tout l'écran */
+    background-attachment: fixed; /* Pour un effet de parallaxe sobre au scroll */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #f4f1ea; /* Couleur de secours proche du fond */
 }
 
 #connexionButton,#inscriptionButton{
     background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#submitConnexion1,#submitInscription2{
+    background-color: #bb5b35;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -54,7 +69,7 @@ form{
 }
 
 input{
-    padding: 100px;
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
