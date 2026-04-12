@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $bd = new PDO('mysql:host=localhost;dbname=users', 'root', ''); //remplacer host et dbname
+    $bd = new PDO('mysql:host=127.0.0.1;port=3307;dbname=ench_hist', 'root', 'rootpassword');
     if (!empty($_POST['username1']) && !empty($_POST['password1'])) {
         $username = $_POST['username1'];
         $password = $_POST['password1'];
@@ -9,7 +9,6 @@
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($user && password_verify($password, $user['password'])) {
-            session_start();
             $_SESSION['user_id'] = $user['id'];
             header("Location: user.php"); // Redirige vers les enchères
             exit();
