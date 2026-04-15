@@ -1,0 +1,67 @@
+body{
+    display: flex;
+    align-items: center;
+    flex-direction:row;
+    justify-content: center;
+    background-image: url('bg.png');
+    background-size: cover; /* Pour que l'image couvre tout l'écran */
+    background-attachment: fixed; /* Pour un effet de parallaxe sobre au scroll */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #f4f1ea; /* Couleur de secours proche du fond */
+    padding-top: 50px;
+}
+
+#divobjet{
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    justify-content: left;
+    background-color: rgba(255, 255, 255, 0.8); /* Fond blanc semi-transparent */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+}
+
+#divprix{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.8); /* Fond blanc semi-transparent */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+button{
+    background-color: #4CAF50; /* Vert */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #45a049; /* Vert plus foncé au survol */
+}
+
+button:active {
+    background-color: #3e8e41; /* Vert encore plus foncé au clic */
+}
+
+img{
+    width: 400px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
