@@ -22,7 +22,11 @@
         <h1 id="titre"><?php echo $titre; ?></h1>
         <p id="description"><?php echo $description; ?></p>
     </div>
-    <div>
+    <div id="divbp">
+        <div id="divbudget">
+            <h1>Budget</h1>
+            <h2 id="argent">180000€</h2>
+        </div>
         <div id="divprix">
             <h2>prix actuel</h2>
             <h1 id="prix"><?php echo $prix; ?></h1>

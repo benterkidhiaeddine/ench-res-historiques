@@ -12,6 +12,25 @@ body{
     padding-top: 50px;
 }
 
+#divbp{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#divbudget{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.8); /* Fond blanc semi-transparent */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+}
+
 #divobjet{
     display: flex;
     align-items: left;
