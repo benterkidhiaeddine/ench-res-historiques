@@ -1,10 +1,10 @@
 <?php
     session_start();
-    $bd = new PDO('mysql:host=127.0.0.1;port=3307;dbname=ench_hist', 'root', 'rootpassword');
+    require __DIR__ . '/../includes/db.php';
     if (!empty($_POST['username1']) && !empty($_POST['password1'])) {
         $username = $_POST['username1'];
         $password = $_POST['password1'];
-        $stmt = $bd->prepare("SELECT * FROM users WHERE username = :username");
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username");
         $stmt->bindParam(':username', $username);
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);

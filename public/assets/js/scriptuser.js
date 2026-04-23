@@ -10,7 +10,7 @@ let argent = 0;
 let prixactuel = 0;
 
 function majobj() { // met a jour les infos des objets en vente dans le dom, a partir de la bd
-    fetch('majobj.php') 
+    fetch('api/majobj.php')
         .then(response => {
             if (!response.ok) throw new Error("Erreur réseau");
             return response.json();
@@ -27,7 +27,7 @@ function majobj() { // met a jour les infos des objets en vente dans le dom, a p
 }
 
 function majbud() { // met a jour le budget de l'utilisateur dans le dom, a partir de la bd
-    fetch('majbud.php') 
+    fetch('api/majbud.php')
         .then(response => {
             if (!response.ok) throw new Error("Erreur réseau");
             return response.json();
@@ -40,7 +40,7 @@ function majbud() { // met a jour le budget de l'utilisateur dans le dom, a part
 }
 
 function verifstart() { // fonction qui verifie si la vente a commencé, et affiche un message d'attente si ce n'est pas le cas, sinon affiche les objets en vente et le budget de l'utilisateur
-    fetch('verifstart.php') 
+    fetch('api/verifstart.php')
         .then(response => {
             if (!response.ok) throw new Error("Erreur réseau");
             return response.json();

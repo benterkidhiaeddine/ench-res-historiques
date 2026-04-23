@@ -3,7 +3,7 @@ body{
     align-items: center;
     flex-direction:row;
     justify-content: center;
-    background-image: url('bg.png');
+    background-image: url('../img/bg.png');
     background-size: cover; /* Pour que l'image couvre tout l'écran */
     background-attachment: fixed; /* Pour un effet de parallaxe sobre au scroll */
     background-position: center;

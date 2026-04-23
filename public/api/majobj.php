@@ -1,9 +1,9 @@
 <?php
 
 try {
-    $bd = new PDO('mysql:host=127.0.0.1;port=3307;dbname=ench_hist', 'root', 'rootpassword');
-    
-    $stmt = $bd->query("SELECT titre, epoque, description, prix, image FROM objects WHERE id = 1");
+    require __DIR__ . '/../../includes/db.php';
+
+    $stmt = $pdo->query("SELECT titre, epoque, description, prix, image FROM objects WHERE id = 1");
     $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
     header('Content-Type: application/json');

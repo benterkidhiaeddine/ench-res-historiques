@@ -2,6 +2,7 @@ services:
   db:
     image: mysql:8.4
     container_name: ench_hist_db
+    restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: ench_hist
@@ -11,6 +12,41 @@ services:
       - "3307:3306"
     volumes:
       - db_data:/var/lib/mysql
+      - ./db:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-prootpassword"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  php:
+    build: ./config/php
+    container_name: ench_hist_php
+    restart: unless-stopped
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: ench_hist
+      DB_USER: ench_user
+      DB_PASSWORD: ench_password
+    volumes:
+      - ./public:/var/www/html/public
+      - ./includes:/var/www/html/includes
+    depends_on:
+      db:
+        condition: service_healthy
+
+  web:
+    image: nginx:1.27-alpine
+    container_name: ench_hist_web
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - ./public:/var/www/html/public:ro
+      - ./config/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - php
 
   phpmyadmin:
     image: phpmyadmin:latest

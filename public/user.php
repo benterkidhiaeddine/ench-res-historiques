@@ -4,7 +4,7 @@
     $epoque = "Epoque bien - XIV eme siecle";
     $description = "ceci est une decription pas trop longue du sceptre, il est en or et en diamants, il a appartenu a un roi de france";
     $prix = "1000 euros";
-    $image = "img/obj" . $objet . ".jpg";
+    $image = "assets/img/obj" . $objet . ".jpg";
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -12,8 +12,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Pannel</title>
-    <link rel="stylesheet" href="styleuser.css">
-    <script src="scriptuser.js" defer></script>
+    <link rel="stylesheet" href="assets/css/styleuser.css">
+    <script src="assets/js/scriptuser.js" defer></script>
 </head>
 <body>
     <div id="divobjet">
