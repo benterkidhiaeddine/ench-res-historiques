@@ -1,10 +1,19 @@
 <?php
-    $objet = 1;
-    $titre = "Sceptre";
-    $epoque = "Epoque bien - XIV eme siecle";
-    $description = "ceci est une decription pas trop longue du sceptre, il est en or et en diamants, il a appartenu a un roi de france";
-    $prix = "1000 euros";
-    $image = "assets/img/obj" . $objet . ".jpg";
+    $objet = 0;
+    $titre = "La vente va bientot commencer";
+    $epoque = " ";
+    $description = " ";
+    $prix = "0€";
+    $image = "assets/img/0debut.png";
+    session_start();
+
+// Si la variable "username" n'existe pas, c'est que l'user n'est pas logué
+    if (!isset($_SESSION['username'])) {
+        header("Location: index.html"); // On le renvoie à la connexion
+        exit(); // On arrête l'exécution du script
+    }
+
+    $username = $_SESSION['username'];
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -16,6 +25,7 @@
     <script src="assets/js/scriptuser.js" defer></script>
 </head>
 <body>
+    welcome <?php echo $username; ?> //temporaire pour afficher le nom de l'utilisateur connecté
     <div id="divobjet">
         <img id="image" src="<?php echo $image; ?>">
         <h2 id="epoque"><?php echo $epoque; ?></h2>

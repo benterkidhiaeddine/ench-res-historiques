@@ -3,9 +3,10 @@ epoque = document.getElementById("epoque");
 description = document.getElementById("description");
 prix = document.getElementById("prix");
 image = document.getElementById("image");
+budget = document.getElementById("argent");
 
-encherir = document.getElementById("submitenchere");
-encherir.addEventListener("click", encherir); // lance la fonction encherir() quand bouton clické
+encherirbutton = document.getElementById("submitenchere");
+encherirbutton.addEventListener("click", encherir); // lance la fonction encherir() quand bouton clické
 let argent = 0;
 let prixactuel = 0;
 
@@ -34,7 +35,7 @@ function majbud() { // met a jour le budget de l'utilisateur dans le dom, a part
         })
         .then(data => {
             argent = data.argent;
-            argent.textContent = data.argent + " €";
+            budget.textContent = data.argent + " €";
         })
         .catch(error => console.error("Erreur AJAX :", error));
 }
@@ -48,8 +49,8 @@ function verifstart() { // fonction qui verifie si la vente a commencé, et affi
         .then(data => {
             if (data.start === 1) {
                 clearInterval(startinterval);
-                setInterval(majobj, 1000); // met a jour les objets en vente toutes les 5 secondes
-                setInterval(majbud, 1000); // met a jour le budget de l'utilisateur toutes les 5 secondes
+                setInterval(majobj, 1000); // met a jour les objets en vente toutes les secondes
+                setInterval(majbud, 1000); // met a jour le budget de l'utilisateur toutes les secondes
         }})
         .catch(error => console.error("Erreur AJAX :", error));
 }
@@ -57,10 +58,17 @@ function verifstart() { // fonction qui verifie si la vente a commencé, et affi
 
 function encherir() { // fonction encherir qui verifie si l'utilisateur a assez d'argent pour encherir, et envoie une requette pour encherrir, met a jour la bd et appelle les fonctions majbud et majobj
     majbud();
-    if (argent >= prixactuel + 500) {
-        
-    }
-}
+    majobj();
+    if (argent < prixactuel + 500) {// verifie si l'utilisateur a assez d'argent pour encherir
+        alert("Vous n'avez pas assez d'argent pour encherir.");
+    } else {
+         fetch('api/encherir.php')
+        .then(response => {
+            if (!response.ok) throw new Error("Erreur réseau");
+            return response.json();
+        })
+        .catch(error => console.error("Erreur AJAX :", error));
+    }}
 
 majbud();
 startinterval = setInterval(verifstart,1000);

@@ -29,6 +29,8 @@ body{
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-top: 50px;
+    margin-left: 50px;
+    width: 400px;
 }
 
 #divobjet{
@@ -54,6 +56,7 @@ body{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-top: 50px;
     margin-left: 50px;
+    width: 400px;
 }
 
 button{
@@ -79,7 +82,7 @@ button:active {
 }
 
 img{
-    width: 400px;
+    width: 1000px;
     height: auto;
     border-radius: 10px;
     margin-bottom: 20px;

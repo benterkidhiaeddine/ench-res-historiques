@@ -1,9 +1,11 @@
 <?php
+session_start();
+$username = $_SESSION['username'];
 
 try {
     require __DIR__ . '/../../includes/db.php';
 
-    $stmt = $pdo->query("SELECT argent FROM users WHERE username = 'amine'");
+    $stmt = $pdo->query("SELECT argent FROM users WHERE username = 'test'");
     $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
     header('Content-Type: application/json');
@@ -15,3 +17,4 @@ try {
 } catch (PDOException $e) {
     echo json_encode(["error" => $e->getMessage()]);
 }
+?>

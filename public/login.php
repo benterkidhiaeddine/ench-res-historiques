@@ -9,7 +9,7 @@
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($user && password_verify($password, $user['password'])) {
-            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['user'] = $user['username'];
             header("Location: user.php"); // Redirige vers les enchères
             exit();
         } else {
