@@ -4,6 +4,7 @@ description = document.getElementById("description");
 prix = document.getElementById("prix");
 image = document.getElementById("image");
 budget = document.getElementById("argent");
+encherisseur = document.getElementById("ench");
 
 encherirbutton = document.getElementById("submitenchere");
 encherirbutton.addEventListener("click", encherir); // lance la fonction encherir() quand bouton clické
@@ -23,6 +24,7 @@ function majobj() { // met a jour les infos des objets en vente dans le dom, a p
             description.textContent = data.description;
             image.src = data.image;
             prixactuel = data.prix;
+            encherisseur.textContent = "Meilleur encherisseur : " + data.ench;
         })
         .catch(error => console.error("Erreur AJAX :", error));
 }

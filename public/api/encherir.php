@@ -36,6 +36,8 @@ try {
         // On met à jour les deux tables
         $stmt = $pdo->prepare("UPDATE objects SET prix = :new_prix WHERE id = :obj_id");
         $stmt->execute(['new_prix' => $new_prix, 'obj_id' => $currentObjId]);
+        $stmt = $pdo->prepare("UPDATE objects SET ench = :user WHERE id = :obj_id");
+        $stmt->execute(['user' => $user, 'obj_id' => $currentObjId]);
         
         // On met à jour les variables pour le JSON final
         $objData['prix'] = $new_prix;

@@ -5,6 +5,7 @@
     $description = " ";
     $prix = "0€";
     $image = "assets/img/0debut.png";
+    $ench = "Aucun encherisseur";
     session_start();
 
 // Si la variable "username" n'existe pas, c'est que l'user n'est pas logué
@@ -25,7 +26,7 @@
     <script src="assets/js/scriptuser.js" defer></script>
 </head>
 <body>
-    welcome <?php echo $username; ?> //temporaire pour afficher le nom de l'utilisateur connecté
+    welcome <?php echo $username; ?>
     <div id="divobjet">
         <img id="image" src="<?php echo $image; ?>">
         <h2 id="epoque"><?php echo $epoque; ?></h2>
@@ -37,9 +38,14 @@
             <h1>Budget</h1>
             <h2 id="argent">180000€</h2>
         </div>
+        <div id="divchrono">
+            <h2>temps restant</h2>
+            <h1 id="temps">5s</h1>
+        </div>
         <div id="divprix">
             <h2>prix actuel</h2>
             <h1 id="prix"><?php echo $prix; ?></h1>
+            <h2 id="ench"><?php echo $ench; ?></h2>
             <button id="submitenchere" type="submit">Encherir +500€</button>
         </div>
     </div>
