@@ -40,7 +40,7 @@
         </div>
         <div id="divchrono">
             <h2>temps restant</h2>
-            <h1 id="temps">5s</h1>
+            <h1 id="temps"> </h1>
         </div>
         <div id="divprix">
             <h2>prix actuel</h2>

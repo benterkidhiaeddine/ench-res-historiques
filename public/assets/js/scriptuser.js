@@ -5,6 +5,7 @@ prix = document.getElementById("prix");
 image = document.getElementById("image");
 budget = document.getElementById("argent");
 encherisseur = document.getElementById("ench");
+chrono = document.getElementById("temps");
 
 encherirbutton = document.getElementById("submitenchere");
 encherirbutton.addEventListener("click", encherir); // lance la fonction encherir() quand bouton clické
@@ -28,6 +29,18 @@ function majobj() { // met a jour les infos des objets en vente dans le dom, a p
         })
         .catch(error => console.error("Erreur AJAX :", error));
 }
+
+majchrono = setInterval(function() { // met a jour le chrono de la vente dans le dom, a partir de la bd
+    fetch('api/chronouser.php')
+        .then(response => {
+            if (!response.ok) throw new Error("Erreur réseau");
+            return response.json();
+        })
+        .then(data => {
+            chrono.textContent = data.chrono + " sec";
+        })
+        .catch(error => console.error("Erreur AJAX :", error));
+}, 1000);
 
 function majbud() { // met a jour le budget de l'utilisateur dans le dom, a partir de la bd
     fetch('api/majbud.php')
