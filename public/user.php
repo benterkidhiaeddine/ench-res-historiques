@@ -10,7 +10,7 @@
 
 // Si la variable "username" n'existe pas, c'est que l'user n'est pas logué
     if (!isset($_SESSION['username'])) {
-        header("Location: index.html"); // On le renvoie à la connexion
+        header("Location: index.php"); // On le renvoie à la connexion
         exit(); // On arrête l'exécution du script
     }
 
