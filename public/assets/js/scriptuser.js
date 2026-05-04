@@ -13,7 +13,7 @@ let argent = 0;
 let prixactuel = 0;
 
 function majobj() { // met a jour les infos des objets en vente dans le dom, a partir de la bd
-    fetch('api/majobj.php')
+    return fetch('api/majobj.php')
         .then(response => {
             if (!response.ok) throw new Error("Erreur réseau");
             return response.json();
@@ -43,12 +43,16 @@ majchrono = setInterval(function() { // met a jour le chrono de la vente dans le
 }, 1000);
 
 function majbud() { // met a jour le budget de l'utilisateur dans le dom, a partir de la bd
-    fetch('api/majbud.php')
+    return fetch('api/majbud.php')
         .then(response => {
             if (!response.ok) throw new Error("Erreur réseau");
             return response.json();
         })
         .then(data => {
+            if (data.error) {
+                console.error("Erreur budget :", data.error);
+                return;
+            }
             argent = data.argent;
             budget.textContent = data.argent + " €";
         })
@@ -72,18 +76,26 @@ function verifstart() { // fonction qui verifie si la vente a commencé, et affi
 
 
 function encherir() { // fonction encherir qui verifie si l'utilisateur a assez d'argent pour encherir, et envoie une requette pour encherrir, met a jour la bd et appelle les fonctions majbud et majobj
-    majbud();
-    majobj();
-    if (argent < prixactuel + 500) {// verifie si l'utilisateur a assez d'argent pour encherir
-        alert("Vous n'avez pas assez d'argent pour encherir.");
-    } else {
-         fetch('api/encherir.php')
-        .then(response => {
-            if (!response.ok) throw new Error("Erreur réseau");
-            return response.json();
+    Promise.all([majbud(), majobj()])
+        .then(() => {
+            if (argent < prixactuel + 500) { // verifie si l'utilisateur a assez d'argent pour encherir
+                alert("Vous n'avez pas assez d'argent pour encherir.");
+                return;
+            }
+
+            return fetch('api/encherir.php')
+                .then(response => {
+                    if (!response.ok) throw new Error("Erreur réseau");
+                    return response.json();
+                })
+                .then(data => {
+                    if (data && data.error) {
+                        console.error("Erreur enchere :", data.error);
+                    }
+                });
         })
         .catch(error => console.error("Erreur AJAX :", error));
-    }}
+}
 
 majbud();
 startinterval = setInterval(verifstart,1000);

@@ -2,13 +2,13 @@
 session_start();
 header('Content-Type: application/json'); // On le met tout en haut
 
-if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['username'])) {
     echo json_encode(["error" => "Non connecté"]);
     exit;
 }
 
 
-$user = $_SESSION['user'];
+$user = $_SESSION['username'];
 
 try {
     require __DIR__ . '/../../includes/db.php'; 
@@ -27,6 +27,11 @@ try {
     $stmt = $pdo->prepare("SELECT prix FROM objects WHERE id = :id");
     $stmt->execute(['id' => $currentObjId]);
     $objData = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$objData) {
+        echo json_encode(["error" => "Aucun objet en cours de vente"]);
+        exit;
+    }
 
     // --- LOGIQUE DE L'ENCHÈRE ---
     if ($userData['argent'] >= ($objData['prix'] + 500)) {
