@@ -26,7 +26,9 @@
     <script src="assets/js/scriptuser.js" defer></script>
 </head>
 <body>
-    welcome <?php echo $username; ?>
+    <div id="userWelcome">
+        Bienvenue, <span class="userName"><?php echo $username; ?></span>
+    </div>
     <div id="divobjet">
         <img id="image" src="<?php echo $image; ?>">
         <h2 id="epoque"><?php echo $epoque; ?></h2>
