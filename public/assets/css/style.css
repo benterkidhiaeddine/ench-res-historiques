@@ -1,8 +1,15 @@
+*{
+    box-sizing: border-box;
+}
+
 body{
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
     background-image: url('../img/bg.png');
     background-size: cover; /* Pour que l'image couvre tout l'écran */
     background-attachment: fixed; /* Pour un effet de parallaxe sobre au scroll */
@@ -14,52 +21,58 @@ body{
 #connexionButton,#inscriptionButton{
     background-color: #4CAF50;
     color: white;
-    padding: 10px 20px;
+    padding: 8px 16px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    width: 160px;
+    font-size: 14px;
+    line-height: 1.2;
 }
 
 #submitConnexion1,#submitInscription2{
     background-color: #bb5b35;
     color: white;
-    padding: 10px 20px;
+    padding: 8px 16px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.2;
 }
 
 #container{
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 #pageInscription{
     display: none;
     flex-direction: column;
     gap: 10px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    margin-top: 16px;
     background-color: white;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: min(420px, 92vw);
 }
 
 #pageConnexion{
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 10px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    margin-top: 16px;
     background-color: white;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: min(420px, 92vw);
 }
 
 form{
@@ -72,4 +85,28 @@ input{
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    width: 100%;
+}
+
+@media (max-width: 768px){
+    #container{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #connexionButton,
+    #inscriptionButton{
+        width: min(260px, 90vw);
+    }
+}
+
+@media (max-width: 480px){
+    body{
+        padding: 12px;
+    }
+
+    #pageInscription,
+    #pageConnexion{
+        padding: 16px;
+    }
 }

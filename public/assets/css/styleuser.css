@@ -1,8 +1,16 @@
+*{
+    box-sizing: border-box;
+}
+
 body{
     display: flex;
     align-items: center;
     flex-direction:row;
     justify-content: center;
+    flex-wrap: wrap;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
     background-image: url('../img/bg.png');
     background-size: cover; /* Pour que l'image couvre tout l'écran */
     background-attachment: fixed; /* Pour un effet de parallaxe sobre au scroll */
@@ -17,6 +25,7 @@ body{
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    gap: 16px;
 }
 
 #divbudget{
@@ -30,7 +39,7 @@ body{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-top: 50px;
     margin-left: 50px;
-    width: 400px;
+    width: min(400px, 92vw);
 }
 
 #divobjet{
@@ -43,6 +52,7 @@ body{
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-top: 50px;
+    width: min(700px, 92vw);
 }
 
 #divprix{
@@ -56,7 +66,7 @@ body{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-top: 50px;
     margin-left: 50px;
-    width: 400px;
+    width: min(400px, 92vw);
 }
 
 #divchrono{
@@ -70,21 +80,23 @@ body{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-top: 50px;
     margin-left: 50px;
-    width: 400px;
+    width: min(400px, 92vw);
 }
 
 button{
     background-color: #4CAF50; /* Vert */
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 10px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
     margin-top: 20px;
     cursor: pointer;
     border-radius: 5px;
+    max-width: 100%;
+    line-height: 1.2;
 }
 
 button:hover {
@@ -96,8 +108,39 @@ button:active {
 }
 
 img{
-    width: 1000px;
+    width: 100%;
+    max-width: 1000px;
     height: auto;
     border-radius: 10px;
     margin-bottom: 20px;
+}
+
+@media (max-width: 900px){
+    body{
+        flex-direction: column;
+        padding-top: 20px;
+    }
+
+    #divbudget,
+    #divprix,
+    #divchrono{
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 480px){
+    body{
+        padding: 12px;
+    }
+
+    #divobjet,
+    #divbudget,
+    #divprix,
+    #divchrono{
+        padding: 16px;
+    }
+
+    button{
+        width: 100%;
+    }
 }
