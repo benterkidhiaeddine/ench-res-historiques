@@ -9,5 +9,14 @@
 </head>
 <body>
     <button id="start">Start</button>
+    <button id="reset">Reset</button>
+
+    <div id="resultsOverlay" hidden>
+        <div id="resultsBox">
+            <button id="resultsClose" type="button">×</button>
+            <h1>Enchères terminées</h1>
+            <ul id="resultsList"></ul>
+        </div>
+    </div>
 </body>
 </html>

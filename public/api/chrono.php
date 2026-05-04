@@ -28,7 +28,7 @@ try {
             $stmt = $pdo->prepare("UPDATE start SET chrono = 30, obj = :next WHERE id = 1");
             $stmt->execute(['next' => $next['id']]);
         } else {
-            $stmt = $pdo->query("UPDATE start SET chrono = 0, start = 0 WHERE id = 1");
+            $stmt = $pdo->query("UPDATE start SET chrono = 0, start = 0, ended = 1 WHERE id = 1");
         }
     } else {
         $stmt = $pdo->prepare("UPDATE start SET chrono = :c WHERE id = 1");

@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="assets/css/styleuser.css">
     <script src="assets/js/scriptuser.js" defer></script>
 </head>
-<body>
+<body data-user="<?php echo htmlspecialchars($username); ?>">
     <div id="userWelcome">
         Bienvenue, <span class="userName"><?php echo $username; ?></span>
     </div>
@@ -49,6 +49,14 @@
             <h1 id="prix"><?php echo $prix; ?></h1>
             <h2 id="ench"><?php echo $ench; ?></h2>
             <button id="submitenchere" type="submit">Encherir +500€</button>
+        </div>
+    </div>
+
+    <div id="resultsOverlay" hidden>
+        <div id="resultsBox">
+            <button id="resultsClose" type="button">×</button>
+            <h1>Enchères terminées</h1>
+            <ul id="resultsList"></ul>
         </div>
     </div>
 </body>

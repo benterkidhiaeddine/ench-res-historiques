@@ -59,6 +59,21 @@ function majbud() { // met a jour le budget de l'utilisateur dans le dom, a part
         .catch(error => console.error("Erreur AJAX :", error));
 }
 
+let resultsDismissed = false;
+let resultsPollingInterval = null;
+let majObjInterval = null;
+let majBudInterval = null;
+
+const resultsOverlay = document.getElementById("resultsOverlay");
+const resultsList = document.getElementById("resultsList");
+const resultsClose = document.getElementById("resultsClose");
+const currentUser = document.body.getAttribute("data-user");
+
+resultsClose.addEventListener("click", () => {
+    resultsOverlay.hidden = true;
+    resultsDismissed = true;
+});
+
 function verifstart() { // fonction qui verifie si la vente a commencé, et affiche un message d'attente si ce n'est pas le cas, sinon affiche les objets en vente et le budget de l'utilisateur
     fetch('api/verifstart.php')
         .then(response => {
@@ -67,11 +82,57 @@ function verifstart() { // fonction qui verifie si la vente a commencé, et affi
         })
         .then(data => {
             if (data.start === 1) {
-                clearInterval(startinterval);
-                setInterval(majobj, 1000); // met a jour les objets en vente toutes les secondes
-                setInterval(majbud, 1000); // met a jour le budget de l'utilisateur toutes les secondes
-        }})
+                if (startinterval) {
+                    clearInterval(startinterval);
+                    startinterval = null;
+                }
+                if (!majObjInterval) majObjInterval = setInterval(majobj, 1000); // met a jour les objets en vente toutes les secondes
+                if (!majBudInterval) majBudInterval = setInterval(majbud, 1000); // met a jour le budget de l'utilisateur toutes les secondes
+                
+                // Si on recommence une session, on reset le flag de l'overlay
+                resultsDismissed = false;
+                resultsOverlay.hidden = true;
+            } else {
+                // Si start === 0, on regarde si c'est fini ou pas encore commencé
+                pollResults();
+            }
+        })
         .catch(error => console.error("Erreur AJAX :", error));
+}
+
+function pollResults() {
+    fetch('api/results.php')
+        .then(r => r.json())
+        .then(data => {
+            if (data.ended) {
+                if (!resultsDismissed) {
+                    showResults(data.results);
+                }
+                // Si c'est fini, on arrête de poller les détails de l'objet en cours
+                if (majObjInterval) { clearInterval(majObjInterval); majObjInterval = null; }
+                if (majBudInterval) { clearInterval(majBudInterval); majBudInterval = null; }
+            } else {
+                // Pas commencé ou reset
+                resultsOverlay.hidden = true;
+                resultsDismissed = false;
+                if (!startinterval) startinterval = setInterval(verifstart, 1000);
+            }
+        });
+}
+
+function showResults(results) {
+    resultsList.innerHTML = "";
+    results.forEach(res => {
+        const li = document.createElement("li");
+        const isWinner = res.ench === currentUser;
+        li.className = isWinner ? "winner-self" : "";
+        li.innerHTML = `
+            <strong>${res.titre}</strong> : 
+            ${res.ench === 'Aucun encherisseur' ? 'Non vendu' : `Gagné par <b>${res.ench}</b> pour ${res.prix}€`}
+        `;
+        resultsList.appendChild(li);
+    });
+    resultsOverlay.hidden = false;
 }
 
 
