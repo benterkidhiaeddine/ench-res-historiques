@@ -17,6 +17,10 @@ Professeur Pascal Urso
 
 https://youtu.be/_d-yPuSG-Z4
 
+# Lien vers le repo Github
+
+https://github.com/benterkidhiaeddine/ench-res-historiques
+
 ## Stack mise en oeuvre
 
 - HTML/CSS (layout grid + flex, responsive, police Inter)
