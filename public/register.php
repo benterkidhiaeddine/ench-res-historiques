@@ -9,6 +9,14 @@ if (!empty($_POST['username2']) && !empty($_POST['password2']) && !empty($_POST[
     $confirmPassword = $_POST['confirmPassword2'];
 
     if ($password === $confirmPassword) {
+        $check = $pdo->prepare("SELECT id FROM users WHERE username = :username");
+        $check->bindParam(':username', $username);
+        $check->execute();
+        if ($check->fetch()) {
+            header('Location: index.php?error=user_exists');
+            exit;
+        }
+
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $pdo->prepare("INSERT INTO users (username, password, role) VALUES (:username, :password, :role)");
         $stmt->bindParam(':username', $username);

@@ -16,6 +16,9 @@ if (!empty($_GET['error'])) {
         case 'password_mismatch':
             $message = "Les mots de passe ne correspondent pas.";
             break;
+        case 'user_exists':
+            $message = "Ce nom d'utilisateur est déjà pris. Veuillez en choisir un autre.";
+            break;
         default:
             $message = "Une erreur est survenue. Veuillez réessayer.";
             break;
