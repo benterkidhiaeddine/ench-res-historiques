@@ -1,6 +1,21 @@
-# ChronoEncheres
+# Enchères Historiques
 
 Application PHP + MySQL (dockerisée) pour des enchères d'objets historiques avec interactions multi-utilisateurs en quasi temps réel via AJAX.
+
+
+# Membres de Groupe
+Le projet est réalisé par :
+
+- Amine BOUFENCHOUCHE
+- Dhia Eddine BENTERKI
+
+
+# Encadrement
+Professeur Pascal Urso
+
+# Lien Démonstration Video 
+
+https://youtu.be/_d-yPuSG-Z4
 
 ## Stack mise en oeuvre
 
