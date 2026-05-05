@@ -76,8 +76,8 @@ INSERT INTO objects (id, titre, epoque, description, prix, prix_initial, image, 
  'Epée de l\'Emir Abdelkader', 
  'Milieu du XIXe siècle', 
  'Cette arme d\'apparat a appartenu à l\'Émir Abdelkader. Poignée en ivoire et fourreau d\'argent ciselé.', 
- 1800000, 
- 1800000, 
+ 180000, 
+ 180000, 
  'assets/img/6.png', 
  'Aucun encherisseur')
 ON DUPLICATE KEY UPDATE 

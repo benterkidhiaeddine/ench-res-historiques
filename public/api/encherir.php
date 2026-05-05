@@ -46,7 +46,7 @@ try {
         
         // On met à jour les variables pour le JSON final
         $objData['prix'] = $new_prix;
-        $stmt = $pdo->query("UPDATE `start` SET `chrono` = 30 WHERE `start`.`id` = 1;");
+        $stmt = $pdo->query("UPDATE `start` SET `chrono` = 5 WHERE `start`.`id` = 1;");
         $data2 = $stmt->fetch(PDO::FETCH_ASSOC);
     }
 

@@ -35,12 +35,16 @@ if (!empty($_GET['error'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enchères historiques</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="assets/js/script.js" defer></script>
 </head>
 <body>
     <h1>Enchères Historiques</h1>
-    <p id="info"><?= htmlspecialchars($message, ENT_QUOTES, 'UTF-8') ?></p>
+    <?php if ($message): ?>
+    <p id="info" class="<?= $messageType ?>"><?= htmlspecialchars($message, ENT_QUOTES, 'UTF-8') ?></p>
+    <?php endif; ?>
     <div id="container">
         <button id="connexionButton">Connexion</button>
         <button id="inscriptionButton">S'inscrire</button>

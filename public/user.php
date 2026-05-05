@@ -22,6 +22,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Pannel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styleuser.css">
     <script src="assets/js/scriptuser.js" defer></script>
 </head>
@@ -51,6 +53,8 @@
             <button id="submitenchere" type="submit">Encherir +500€</button>
         </div>
     </div>
+
+    <div id="toast" hidden></div>
 
     <div id="resultsOverlay" hidden>
         <div id="resultsBox">
