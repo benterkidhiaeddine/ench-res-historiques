@@ -1,3 +1,34 @@
+<?php
+$message = '';
+$messageType = 'error'; // pour styling CSS si besoin
+
+if (!empty($_GET['error'])) {
+    switch ($_GET['error']) {
+        case 'login':
+            $message = "Nom d'utilisateur ou mot de passe incorrect.";
+            break;
+        case 'register':
+            $message = "Erreur d'inscription : veuillez vérifier les informations saisies.";
+            break;
+        case 'empty_fields':
+            $message = "Veuillez remplir tous les champs.";
+            break;
+        case 'password_mismatch':
+            $message = "Les mots de passe ne correspondent pas.";
+            break;
+        default:
+            $message = "Une erreur est survenue. Veuillez réessayer.";
+            break;
+    }
+} elseif (!empty($_GET['success'])) {
+    $messageType = 'success';
+    switch ($_GET['success']) {
+        case 'register':
+            $message = "Inscription réussie ! Vous pouvez vous connecter.";
+            break;
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -9,6 +40,7 @@
 </head>
 <body>
     <h1>Enchères Historiques</h1>
+    <p id="info"><?= htmlspecialchars($message, ENT_QUOTES, 'UTF-8') ?></p>
     <div id="container">
         <button id="connexionButton">Connexion</button>
         <button id="inscriptionButton">S'inscrire</button>

@@ -63,7 +63,6 @@ body{
 }
 
 #pageConnexion{
-    display: none;
     flex-direction: column;
     gap: 10px;
     position: relative;

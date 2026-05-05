@@ -2,7 +2,7 @@
     $objet = 0;
     $titre = "La vente va bientot commencer";
     $epoque = " ";
-    $description = " ";
+    $description = " Une grande vente aux enchères d'objets historiques va bientôt débuter ! Les valeurs des lots vont monter cescendo, soyez à l'affût !";
     $prix = "0€";
     $image = "assets/img/0debut.png";
     $ench = "Aucun encherisseur";
